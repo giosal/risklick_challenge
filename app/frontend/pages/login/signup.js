@@ -1,5 +1,5 @@
 import Cookies from 'cookies'
-import clientPromise from "../../lib/mongodb";
+import clientPromise from "mongodb";
 const {createHash} = require('node:crypto');
 
 export default async function handler(req, res) {
@@ -28,7 +28,7 @@ export default async function handler(req, res) {
         await db.collection("Profiles").insertOne(bodyObject);
         const cookies = new Cookies(req, res)
         cookies.set('username', username)
-        res.redirect("/")
+        res.redirect("/blog")
     } else {
         res.redirect("/")
     }
